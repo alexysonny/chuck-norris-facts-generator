@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface ChuckJoke {
   categories: string[];
@@ -11,6 +12,11 @@ export interface ChuckJoke {
   created_at: Date;
   updated_at: Date;
 }
+
+export type SearchResponse = {
+  total: number;
+  result: ChuckJoke[];
+};
 
 @Injectable({
   providedIn: 'root',
@@ -38,7 +44,19 @@ export class FactsServiceService {
 
     params = params.set('query', query);
 
-    return this._http.get<ChuckJoke[]>(`${this._chuckURl}/search`, { params });
+    return this._http
+      .get<SearchResponse>(`${this._chuckURl}/search`, {
+        params,
+      })
+      .pipe(
+        map((response: SearchResponse) =>
+          response.result.sort(
+            (factA: ChuckJoke, factB: ChuckJoke) =>
+              new Date(factA.created_at).getTime() -
+              new Date(factB.created_at).getTime()
+          )
+        )
+      );
   }
 
   public getChuckCategories(): Observable<string[]> {
