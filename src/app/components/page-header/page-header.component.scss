@@ -1,0 +1,14 @@
+.page-header {
+  &__image {
+    position: relative;
+    background-image: url("./../../../assets/images/background.jpg");
+    height: 300px;
+
+    img {
+      max-width: 360px;
+      position: absolute;
+      bottom: -20%;
+      left: calc(50% - 180px);
+    }
+  }
+}
