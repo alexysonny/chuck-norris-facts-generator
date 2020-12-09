@@ -1,0 +1,38 @@
+.button {
+  width: 100%;
+  padding: 15px;
+  background-color: #f15a24;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.form-control {
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-right: 10px;
+  }
+}
+
+.page {
+  max-width: 1000px;
+  margin: 100px auto 0;
+
+  &__tabs {
+    margin: 15px 0;
+  }
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff2ee;
+
+  &__button {
+    width: 160px;
+  }
+}
