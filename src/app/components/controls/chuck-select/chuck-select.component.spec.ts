@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FactsViewComponent } from './facts-view.component';
+import { ChuckSelectComponent } from './chuck-select.component';
 
-describe('FactsViewComponent', () => {
-  let component: FactsViewComponent;
-  let fixture: ComponentFixture<FactsViewComponent>;
+describe('ChuckSelectComponent', () => {
+  let component: ChuckSelectComponent;
+  let fixture: ComponentFixture<ChuckSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FactsViewComponent ]
+      declarations: [ ChuckSelectComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FactsViewComponent);
+    fixture = TestBed.createComponent(ChuckSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

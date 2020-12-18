@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const MODULES = [
   MatIconModule,
@@ -13,6 +14,7 @@ const MODULES = [
   MatPaginatorModule,
   MatSortModule,
   MatSelectModule,
+  MatFormFieldModule,
 ];
 
 @NgModule({

@@ -4,15 +4,14 @@
     [label]="'Your name'"
     formControlName="userName"
   ></app-chuck-input>
-  <div class="form-control">
-    <label for="categoryControl">Category </label>
-    <ng-select
-      [items]="categories"
-      [multiple]="true"
-      formControlName="categories"
-      labelForId="categoryControl"
-    ></ng-select>
-  </div>
+
+  <app-chuck-select
+    [name]="'categoryControl'"
+    [label]="'Category'"
+    [placeholder]="'Pick a category'"
+    [options]="categories"
+    formControlName="categories"
+  ></app-chuck-select>
   <app-chuck-button [classList]="'form__button'" [buttonType]="'submit'"
     >GO!</app-chuck-button
   >

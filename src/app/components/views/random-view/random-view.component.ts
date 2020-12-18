@@ -28,7 +28,6 @@ export class RandomViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.valueChanges.subscribe((val: any) => console.log('### ', val));
     this._factsService
       .getChuckCategories()
       .subscribe((categories: string[]) => (this.categories = categories));
@@ -37,9 +36,8 @@ export class RandomViewComponent implements OnInit {
   public getRandomFact(): void {
     const { categories, userName } = this.form.value;
 
-    const joinedCategories = categories ? categories.join(',') : null;
     this._factsService
-      .getRandomJoke(joinedCategories, userName)
+      .getRandomJoke(categories, userName)
       .subscribe((joke: ChuckJoke) => this.joke$.next(joke));
   }
 }

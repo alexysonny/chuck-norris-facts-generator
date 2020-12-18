@@ -1,0 +1,19 @@
+<div class="">
+  <label *ngIf="label" [for]="name">{{ label }} </label>
+
+  <mat-form-field appearance="outline">
+    <div class="selectWrapper">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      <mat-select
+        [placeholder]="placeholder"
+        [disabled]="isDisabled"
+        multiple
+        (selectionChange)="inputHandler($event.value)"
+      >
+        <mat-option *ngFor="let option of options" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </mat-form-field>
+</div>
