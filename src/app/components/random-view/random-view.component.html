@@ -1,0 +1,24 @@
+<form class="page__form form" [formGroup]="form" (ngSubmit)="getRandomFact()">
+  <div class="form-control">
+    <label for="nameControl">Your name </label>
+    <input id="nameControl" type="text" formControlName="userName" />
+  </div>
+  <div class="form-control">
+    <label for="categoryControl">Category </label>
+    <ng-select
+      [items]="categories"
+      [multiple]="true"
+      formControlName="categories"
+      labelForId="categoryControl"
+    ></ng-select>
+  </div>
+  <app-chuck-button [classList]="'form__button'" [buttonType]="'submit'"
+    >GO!</app-chuck-button
+  >
+</form>
+
+<div class="page__content">
+  <app-fact-card *ngIf="joke$ | async as joke">
+    <p>{{ joke.value }}</p>
+  </app-fact-card>
+</div>

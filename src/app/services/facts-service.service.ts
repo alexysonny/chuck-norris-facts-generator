@@ -2,16 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-export interface ChuckJoke {
-  categories: string[];
-  icon_url: string;
-  id: string;
-  value: string;
-  url: string;
-  created_at: Date;
-  updated_at: Date;
-}
+import { ChuckJoke } from '../models/chuck-joke.model';
 
 export type SearchResponse = {
   total: number;
@@ -48,15 +39,7 @@ export class FactsServiceService {
       .get<SearchResponse>(`${this._chuckURl}/search`, {
         params,
       })
-      .pipe(
-        map((response: SearchResponse) =>
-          response.result.sort(
-            (factA: ChuckJoke, factB: ChuckJoke) =>
-              new Date(factA.created_at).getTime() -
-              new Date(factB.created_at).getTime()
-          )
-        )
-      );
+      .pipe(map((response: SearchResponse) => response.result));
   }
 
   public getChuckCategories(): Observable<string[]> {

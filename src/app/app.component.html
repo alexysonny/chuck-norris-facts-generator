@@ -4,43 +4,7 @@
   <div class="page__tabs">
     <app-tabs (activeTabChanged)="tabChangeHandler($event)"></app-tabs>
   </div>
-  <form
-    *ngIf="activeTab === 'random'"
-    class="page__form form"
-    [formGroup]="form"
-    (ngSubmit)="getRandomFact()"
-  >
-    <div class="form-control">
-      <label for="nameControl">Your name </label>
-      <input id="nameControl" type="text" formControlName="userName" />
-    </div>
-    <div class="form-control">
-      <label for="categoryControl">Category </label>
-      <ng-select
-        [items]="categories"
-        [multiple]="true"
-        formControlName="categories"
-        labelForId="categoryControl"
-      ></ng-select>
-    </div>
-    <button class="form__button button" type="submit">GO!</button>
-  </form>
 
-  <form
-    *ngIf="activeTab === 'search'"
-    class="page__form form"
-    [formGroup]="searchForm"
-    (ngSubmit)="searchForFacts()"
-  >
-    <div class="form-control">
-      <label for="nameControl">Key word(s) </label>
-      <input id="nameControl" type="text" formControlName="search" />
-    </div>
-
-    <button class="form__button button" type="submit">GO!</button>
-  </form>
-
-  <div class="page__content">
-    <app-facts-view [jokes]="jokes$ | async"></app-facts-view>
-  </div>
+  <app-random-view *ngIf="activeTab === 'random'"></app-random-view>
+  <app-search-view *ngIf="activeTab === 'search'"></app-search-view>
 </div>

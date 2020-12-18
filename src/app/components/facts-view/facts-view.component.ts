@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ChuckJoke } from 'src/app/services/facts-service.service';
+import { ChuckJoke } from 'src/app/models/chuck-joke.model';
 
 @Component({
   selector: 'app-facts-view',

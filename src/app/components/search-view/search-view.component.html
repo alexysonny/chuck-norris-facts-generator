@@ -1,0 +1,92 @@
+<form
+  class="page__form form"
+  [formGroup]="searchForm"
+  (ngSubmit)="searchForFacts()"
+>
+  <div class="form-control">
+    <label for="nameControl">Key word(s) </label>
+    <input id="nameControl" type="text" formControlName="search" />
+  </div>
+
+  <app-chuck-button
+    [classList]="'form__button'"
+    [buttonType]="'submit'"
+    [disabledState]="isSearchButtonDisabled"
+  >
+    GO!
+  </app-chuck-button>
+</form>
+
+<div class="page__content">
+  <div *ngIf="dataSource" class="page__table table">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      multiTemplateDataRows
+      matSort
+      [matSortStart]="'asc'"
+      (matSortChange)="sortedData($event)"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="table__cell">
+            ID
+            <mat-icon>filter_alt</mat-icon>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let joke">{{ joke.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef>
+          <div class="table__cell">
+            Category
+            <mat-icon>filter_alt</mat-icon>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let joke">{{ joke.categories.join(",") }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          <div class="table__cell">
+            Date created
+            <mat-icon>filter_alt</mat-icon>
+          </div>
+        </th>
+        <td mat-cell *matCellDef="let joke">
+          {{ joke.created_at | date: "medium" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="expandedDetail">
+        <td
+          mat-cell
+          *matCellDef="let element"
+          [attr.colspan]="displayedColumns.length"
+        >
+          <div
+            class="element-detail"
+            [@collapseAnimation]="showCollapseAnimation(element)"
+          >
+            <app-fact-card *ngIf="element == expandedElement">
+              <p>{{ element.value }}</p>
+            </app-fact-card>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let element; columns: displayedColumns"
+        class="element-row"
+        [class.expanded-row]="expandedElement === element"
+        (click)="expandElementHandler(element)"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="detail-row"
+      ></tr>
+    </table>
+  </div>
+</div>
