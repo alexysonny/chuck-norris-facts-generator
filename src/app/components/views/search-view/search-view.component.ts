@@ -87,7 +87,6 @@ export class SearchViewComponent implements OnInit {
   }
 
   public expandElementHandler(element: ChuckJoke | null): void {
-    console.log('@@@');
     this.expandedElement = this.expandedElement === element ? null : element;
   }
 
