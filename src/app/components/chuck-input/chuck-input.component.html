@@ -1,1 +1,6 @@
-<p>chuck-input works!</p>
+<div class="form-control">
+  <label *ngIf="label" [for]="name">{{ label }}</label>
+  <div class="form-control__input">
+    <input [id]="name" [type]="type" (input)="inputHandler($event)" />
+  </div>
+</div>

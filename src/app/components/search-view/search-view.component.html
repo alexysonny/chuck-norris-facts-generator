@@ -3,10 +3,11 @@
   [formGroup]="searchForm"
   (ngSubmit)="searchForFacts()"
 >
-  <div class="form-control">
-    <label for="nameControl">Key word(s) </label>
-    <input id="nameControl" type="text" formControlName="search" />
-  </div>
+  <app-chuck-input
+    [name]="'searchControl'"
+    [label]="'Key word(s)'"
+    formControlName="search"
+  ></app-chuck-input>
 
   <app-chuck-button
     [classList]="'form__button'"

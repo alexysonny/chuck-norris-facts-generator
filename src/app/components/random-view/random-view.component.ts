@@ -28,6 +28,7 @@ export class RandomViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe((val: any) => console.log('### ', val));
     this._factsService
       .getChuckCategories()
       .subscribe((categories: string[]) => (this.categories = categories));

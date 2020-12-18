@@ -1,8 +1,9 @@
 <form class="page__form form" [formGroup]="form" (ngSubmit)="getRandomFact()">
-  <div class="form-control">
-    <label for="nameControl">Your name </label>
-    <input id="nameControl" type="text" formControlName="userName" />
-  </div>
+  <app-chuck-input
+    [name]="'nameControl'"
+    [label]="'Your name'"
+    formControlName="userName"
+  ></app-chuck-input>
   <div class="form-control">
     <label for="categoryControl">Category </label>
     <ng-select
